@@ -1,0 +1,42 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-shell-escape",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+        },
+        {
+            "name": "mylatexformat",
+            "command": "etex",
+            "args": [
+                "-initialize",
+                "-jobname=%DOCFILE%",
+                "&pdflatex",
+                "mylatexformat.ltx",
+                "\"\"\"%DOCFILE%\"\"\""
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },{
+            "name": "recompile header",
+            "tools": [
+                "mylatexformat"
+            ]
+        }
+    ],
+}
