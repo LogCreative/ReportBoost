@@ -1,0 +1,169 @@
+
+% Common Header for the whole folder.
+% Compile through 
+%     etex  for pdflatex
+% or xetex  for xelatex
+% or luatex for lualatex
+% to cache the header.
+%
+% Recipe: recompile header in VS Code
+%
+
+%------------------------------------------------
+%      The static area for caching
+%------------------------------------------------
+
+%% Base document class.
+
+\documentclass[UTF8,a4paper,heading=true]{ctexart}
+
+\ctexset {
+    part ={
+        format += \color{maintheme!50!black}
+    },
+    section = {
+        format += \color{maintheme!70!black}\raggedright
+    },
+    subsection = {
+        format += \color{maintheme!90!black}\raggedright
+    },
+    subsubsection = {
+        format += \color{maintheme}
+    }
+}
+\renewcommand\sectionmark[1]{%
+\markright{\color{maintheme}\CTEXifname{\CTEXthesection~~~~}{}#1}}
+
+%% Change to a another compatible font.
+
+\usepackage[T1]{fontenc}
+\usepackage{beramono}       % main font.
+\usepackage{mathpazo}       % verbatim font.
+
+%% Adjust border.
+
+\usepackage[heightrounded]{geometry}
+\geometry{left=3cm,right=3cm,top=4cm,bottom=4cm}
+
+%% Dependcies for graphics
+
+\usepackage{graphicx}
+\graphicspath{{img/}}
+
+\usepackage{tikz}
+\usetikzlibrary{external}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+%% Dependencies for tables
+
+\usepackage{array,booktabs}
+\usepackage{pgfplotstable}
+\pgfplotstableset{
+    every head row/.style={
+        before row=\toprule,
+        after row=\midrule
+    },
+    every last row/.style={
+        after row=\bottomrule
+    },
+}
+
+%% Main color.
+
+\definecolor{maintheme}{RGB}{70,130,180}
+
+%% Title style.
+
+\makeatletter
+\def\subtitle#1{
+    \def\@subtitle{#1}
+}
+\def\@subtitle{}
+\def\@maketitle{
+    \raggedright
+    {\color{maintheme}
+    {\Large\bfseries\@title\par}
+    \@subtitle\par\bigskip
+    }
+    \@author\par
+    \@date
+}
+\makeatother
+
+%% Listings.
+
+\usepackage{listings}
+\definecolor{grey}{rgb}{0.8,0.8,0.8}
+\definecolor{darkgreen}{rgb}{0,0.3,0}
+\definecolor{darkblue}{rgb}{0,0,0.3}
+\lstset{%
+    columns=flexible,
+    inputencoding=utf8,
+    basicstyle=\small\ttfamily,
+    numberstyle=\scriptsize\ttfamily\color{gray},
+    showstringspaces=false,
+    showspaces=false,%
+    tabsize=4,
+    numbers=left,
+    framexleftmargin=8mm,
+    xleftmargin=8mm,
+    keepspaces=true,
+    frame=lines,
+    framerule=1pt,
+    rulecolor=\color{green!50!black},
+    backgroundcolor=\color{green!5},
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{red!75},
+    keywordstyle=\color{blue!80!black},
+    lineskip=-1pt,
+    breaklines,
+    extendedchars=false
+}
+\providecommand{\code}[2][]{\lstinputlisting[caption=\href{run:#2}{\ttfamily #2},#1]{#2}}
+\providecommand{\codeseg}[4][]{\lstinputlisting[caption=\href{run:#2}{\ttfamily #2},firstline=#3,firstnumber=#3,lastline=#4,#1]{#2}}
+
+%% Citation.
+
+\usepackage{gbt7714}
+
+%% Multicol and set enumitem to nosep.
+
+\usepackage{multicol}
+\usepackage{enumitem}
+\setlist{nosep}
+
+%% Hyperref.
+
+\usepackage[colorlinks,linkcolor=maintheme]{hyperref}
+\usepackage{bookmark}
+
+%% Common subtitle and author.
+
+\subtitle{副标题}
+\author{姓名}
+
+\begin{document}
+    \title{标题}
+    \maketitle
+    \tableofcontents
+    \part{第一部分}
+    \section{第一节}
+    \subsection{第一小节}
+    \subsubsection{第一小小节}
+    \section{第二节}
+    \clearpage
+    \lstset{language=c++}
+    \begin{lstlisting}[caption=test.cpp]
+#include<iostream>
+using namespace std;
+
+int main(){
+    // I am coding!
+    cout<<"Hello, world!"<<endl;
+    return 0;
+}
+\end{lstlisting}
+
+
+\end{document}
