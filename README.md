@@ -10,7 +10,7 @@ A LaTeX IDE for a faster compiling speed.
 
 ## 路线图
 
-- [x] 采用 `mylatexformat` 对模板的依赖进行存储，这样可以减少编译时寻找库所花费的时间，并且可以免除以前的局部依赖文档类不在同一个文件夹的问题。
+- [x] 采用 `mylatexformat` 对模板的依赖进行存储，这样可以减少编译时寻找库所花费的时间，并且可以免除以前的局部依赖文档类不能在同一个文件夹的问题。
 - [x] 兼容于 tikz `external` 库用于缓存 tikz 图像。
 - [ ] 多线程
 - [ ] xelatex 支持与 CI 集成
