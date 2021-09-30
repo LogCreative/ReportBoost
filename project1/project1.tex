@@ -1,9 +1,37 @@
 %&"../template"
+% The line above indicates the fmt file to use.
 \endofdump
+%-------------------------------------------------
+%     Dynamic premable indicated by \endofdump
+%-------------------------------------------------
 \tikzexternalize[prefix=cache/]{project1}
 \begin{document}
     \title{Report Boost 说明文档}
     \subtitle{Report Boost README}
     \author{Log Creative}
     \maketitle
+
+\section{简明使用方法}
+\begin{enumerate}
+    \item 使用 VS Code 打开本文件夹。
+    \item 使用 \verb"Receipe: recompile header" 编译 \href{run:../template}{template} 以获得静态依赖缓存，以 \verb".fmt" 结尾。
+    \item 使用 \verb"Receipe: latexmk" 编译 \href{run:project1}{project1/project1.tex} 即可使用该缓存。文件的第一行表明了需要使用的缓存地址，\verb"\endofdump" 表明了静态依赖库的使用结束位置，之后为你需要为该文档新加入的导言区内容。
+\end{enumerate}
+
+\section{路线图}
+
+\begin{itemize}
+    \item[$\surd$] 采用 \verb"mylatexformat" 对模板的依赖进行存储，这样可以减少编译时寻找库所花费的时间，并且可以免除以前的局部依赖文档类不在同一个文件夹的问题。
+    \item[$\surd$] 兼容于 Ti\emph{k}Z \verb"external" 库用于缓存 Ti\emph{k}Z 图像。
+    \item 多线程
+    \item xelatex 支持与 CI 集成
+    \item 集成脚本
+\end{itemize}
+
+\vfill
+
+{
+\scriptsize\centering
+Licensed under \href{run:../LICENSE}{DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE}.
+}
 \end{document}
