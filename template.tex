@@ -122,6 +122,9 @@
 }
 \providecommand{\code}[2][]{\lstinputlisting[caption=\href{run:#2}{\ttfamily #2},#1]{#2}}
 \providecommand{\codeseg}[4][]{\lstinputlisting[caption=\href{run:#2}{\ttfamily #2},firstline=#3,firstnumber=#3,lastline=#4,#1]{#2}}
+\lstdefinestyle{commandshell}{
+    language=bash,numbers=none,frame=single,frameround=fttt,basicstyle=\normalsize\ttfamily
+}  % usage: \begin{lstlisting}[style=commandshell]
 
 %% Citation.
 
