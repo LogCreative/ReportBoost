@@ -17,9 +17,34 @@
             "name": "mylatexformat",
             "command": "etex",
             "args": [
-                "-initialize",
+                "-ini",
                 "-jobname=%DOCFILE%",
                 "&pdflatex",
+                "mylatexformat.ltx",
+                "\"\"\"%DOCFILE%\"\"\""
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk (xelatex)",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-xelatex",
+                "-shell-escape",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+        },
+        {
+            "name": "mylatexformatxe",
+            "command": "xetex",
+            "args": [
+                "-ini",
+                "-jobname=%DOCFILE%",
+                "&xelatex",
                 "mylatexformat.ltx",
                 "\"\"\"%DOCFILE%\"\"\""
             ],
@@ -36,6 +61,18 @@
             "name": "recompile header",
             "tools": [
                 "mylatexformat"
+            ]
+        },
+        {
+            "name": "latexmk (xelatex)",
+            "tools": [
+                "latexmk (xelatex)"
+            ]
+        },
+        {
+            "name": "recompile header (xelatex)",
+            "tools": [
+                "mylatexformatxe"
             ]
         }
     ],
